@@ -1,0 +1,3 @@
+I'm initializing the deltaTime for bullet speed very badly, the result is that deltaTime
+is different for each bullet and in result the overall speed varies.
+I need to init the bulletSpeed correctly.
