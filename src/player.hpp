@@ -19,6 +19,6 @@ public:
     void playerMovement(float& deltaTime, sf::Vector2f& currentPlayerPos);
     void drawPlayer(sf::RenderWindow& window);
     void getPlayerPos(sf::Vector2f& currentPos, sf::Vector2f& playerCenter);
-    void playerShooting(bool& isFired, sf::Time& bulletTime, sf::Clock& bulletClock, sf::Vector2f& velocity, sf::Vector2f& aimDirNorm, float& bulletSpeed);
+    void playerShooting(bool& isFired, sf::Time& bulletTime, sf::Clock& bulletClock, sf::Vector2f& velocity, sf::Vector2f& aimDirNorm);
 };
 #endif

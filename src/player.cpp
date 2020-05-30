@@ -42,12 +42,12 @@ void Player::getPlayerPos(sf::Vector2f& currentPos, sf::Vector2f& playerCenter)
     playerCenter = sf::Vector2f(currentPos.x + playerModel.getRadius(), currentPos.y + playerModel.getRadius());
 }
 
-void Player::playerShooting(bool& isFired, sf::Time& bulletTime, sf::Clock& bulletClock, sf::Vector2f& velocity, sf::Vector2f& aimDirNorm, float& bulletSpeed)
+void Player::playerShooting(bool& isFired, sf::Time& bulletTime, sf::Clock& bulletClock, sf::Vector2f& velocity, sf::Vector2f& aimDirNorm)
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left) &&
         bulletTime.asMilliseconds() >= 100){
         isFired = true;
-        velocity = aimDirNorm * bulletSpeed;
+        velocity = aimDirNorm * 800.f;
         bulletClock.restart();
     }
 }

@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Window/VideoMode.hpp>
 #include <iostream>
 #include <SFML/Window/Event.hpp>
 #include <vector>
@@ -17,6 +18,7 @@ class Game
 private:
     //Objects.
     sf::RenderWindow window;
+    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     sf::Event event;
     Enemy * enemy;
     Bullet * bullet;
@@ -38,7 +40,6 @@ private:
     std::vector<Bullet> bulletVector;
     std::vector<Enemy> enemyVector;
     float deltaTime;
-    float bulletSpeed;
     float randomX;
     float randomY;
     bool isFired = false;

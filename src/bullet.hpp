@@ -15,7 +15,7 @@ private:
 
 public:
     Bullet(sf::Vector2f& playerPos, sf::Vector2f& velocity);
-    void moveBullet();
+    void moveBullet(float& deltaTime);
     void drawBullet(sf::RenderWindow& window);
     void getBulletPos();
     sf::Vector2f bulletPosition;

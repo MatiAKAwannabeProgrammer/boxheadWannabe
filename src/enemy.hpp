@@ -17,7 +17,7 @@ private:
 
 public:
     Enemy();
-    void updateEnemy(float& deltaTime);
+    void updateEnemy(float& deltaTime, sf::RenderWindow& window);
     void drawEnemy(sf::RenderWindow& window);
     void getEnemyPosition();
     void setRandomDir(float& randomX, float& randomY);

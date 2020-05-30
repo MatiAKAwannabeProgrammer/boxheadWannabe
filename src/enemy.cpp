@@ -4,17 +4,17 @@
 
 Enemy::Enemy()
 {
-    enemyModel.setPosition(sf::Vector2f(300.f, 300.f));
+    enemyModel.setPosition(sf::Vector2f(500.f, 300.f));
     enemyModel.setFillColor(sf::Color::Cyan); 
     enemyModel.setRadius(20.f);
 }
 
-void Enemy::updateEnemy(float& deltaTime)
+void Enemy::updateEnemy(float& deltaTime, sf::RenderWindow& window)
 {
-    if (enemyPosition.x <= 0 ||
-        enemyPosition.x >= 800 ||
-        enemyPosition.y <= 0 ||
-        enemyPosition.y >= 600){
+    if (enemyPosition.x >= window.getSize().x ||
+        enemyPosition.x <= 0 ||
+        enemyPosition.y >= window.getSize().y ||
+        enemyPosition.y <= 0){
         randX *= -1;
         randY *= -1;
     }

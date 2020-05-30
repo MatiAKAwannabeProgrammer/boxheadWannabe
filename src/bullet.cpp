@@ -11,9 +11,9 @@ Bullet::Bullet(sf::Vector2f& playerCenter, sf::Vector2f& velocity)
     this->velocity = velocity;
 }
 
-void Bullet::moveBullet()
+void Bullet::moveBullet(float& deltaTime)
 {
-    bulletModel.move(velocity);
+    bulletModel.move(velocity * deltaTime);
 }
 
 void Bullet::drawBullet(sf::RenderWindow& window)

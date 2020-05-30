@@ -1,11 +1,12 @@
 #include "game.hpp"
+#include <SFML/Window/WindowStyle.hpp>
 #include <iostream>
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/Window.hpp>
 
 Game::Game()
 {
-    window.create(sf::VideoMode(800.f, 600.f), "Test");
+    window.create(sf::VideoMode(1024, 768, desktop.bitsPerPixel), "Test");
     window.setFramerateLimit(60);
 }
 
@@ -46,7 +47,7 @@ void Game::update()
 
     updateEnemy();
     player.playerMovement(deltaTime, currentPlayerPos);
-    player.playerShooting(isFired, bulletTime, bulletClock, velocity, aimDirNorm, bulletSpeed);
+    player.playerShooting(isFired, bulletTime, bulletClock, velocity, aimDirNorm);
 
     if (isFired){
         createBullet();
@@ -78,7 +79,7 @@ void Game::createEnemy()
 void Game::updateEnemy()
 {
     for (unsigned int i = 0; i < enemyVector.size(); i++){
-        enemyVector[i].updateEnemy(deltaTime);
+        enemyVector[i].updateEnemy(deltaTime, window);
         enemyVector[i].getEnemyPosition();
     }
 }
@@ -99,8 +100,15 @@ void Game::createBullet()
 void Game::updateBullet()
 {
     for (unsigned int i = 0; i < bulletVector.size(); i++){
-        bulletVector[i].moveBullet();
+        bulletVector[i].moveBullet(deltaTime);
         bulletVector[i].getBulletPos();
+
+        if (bulletVector[i].bulletPosition.x > window.getSize().x ||
+            bulletVector[i].bulletPosition.y > window.getSize().y ||
+            bulletVector[i].bulletPosition.x < 0 ||
+            bulletVector[i].bulletPosition.y < 0){
+            bulletVector.erase(bulletVector.begin() + i);
+        }
     }
 }
 
@@ -124,5 +132,4 @@ void Game::calculations()
 {
     aimDir = mousePos - playerCenter;
     aimDirNorm = aimDir / sqrtf(pow(aimDir.x, 2) + pow(aimDir.y, 2));
-    bulletSpeed = deltaTime * 900.f;
 }
